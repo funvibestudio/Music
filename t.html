@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Playlist 9 Musiques</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff6f61, #e6d5f7, #4b0082, #d8b4f8);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      width: 90vw;
+      max-width: 800px;
+      z-index: 1;
+    }
+
+    .tile {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      user-select: none;
+    }
+
+    .tile:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.25);
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="tile" onclick="playSong('music1.mp3')">Stay - Rihanna</div>
+    <div class="tile" onclick="playSong('music2.mp3')">Levitating - Dua Lipa</div>
+    <div class="tile" onclick="playSong('music3.mp3')">As It Was - Harry Styles</div>
+    <div class="tile" onclick="playSong('music4.mp3')">Bad Guy - Billie Eilish</div>
+    <div class="tile" onclick="playSong('music5.mp3')">Peaches - Justin Bieber</div>
+    <div class="tile" onclick="playSong('music6.mp3')">Dance Monkey - Tones And I</div>
+    <div class="tile" onclick="playSong('music7.mp3')">Shivers - Ed Sheeran</div>
+    <div class="tile" onclick="playSong('music8.mp3')">Blinding Lights - The Weeknd</div>
+    <div class="tile" onclick="playSong('music9.mp3')">Uptown Funk - Bruno Mars</div>
+  </div>
+
+  <audio id="audioPlayer"></audio>
+
+  <script>
+    function playSong(filename) {
+      const audio = document.getElementById('audioPlayer');
+      audio.src = filename;
+      audio.play().catch(error => {
+        console.warn("Lecture audio bloquée :", error);
+      });
+    }
+  </script>
+</body>
+</html>
